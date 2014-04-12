@@ -21,17 +21,17 @@
                        ng-change="App.validation()"
                        type="text"/>
             </span>
-            <button ng-disabled="!App.Task.userResponse" ng-click="App.testing()">send</button>
+            <button ng-disabled="!App.Task.userResponse" ng-click="App.testing()">Submit</button>
         </div>
 
     </div>
     <div class="main" ng-show="App.Tab.settings">
         <div class="enter">
             Settings: <br/>
-            <span>Add:  <input type="checkbox" ng-model="App.Settings.add"/></span><br/>
-            <span>Sub:  <input type="checkbox" ng-model="App.Settings.sub"/></span><br/>
-            <span>Div:  <input type="checkbox" ng-model="App.Settings.divide"/></span><br/>
-            <span>Mult:  <input type="checkbox" ng-model="App.Settings.multiply"/></span>
+            <span>Integral:  <input type="checkbox" ng-model="App.Settings.integral"/></span><br/>
+            <span>Approximation:  <input type="checkbox" ng-model="App.Settings.approximation"/></span><br/>
+            <span>Taylor:  <input type="checkbox" ng-model="App.Settings.taylor"/></span><br/>
+            <span>Convergence:  <input type="checkbox" ng-model="App.Settings.convergence"/></span>
         </div>
     </div>
     <div class="right_section">

@@ -2,7 +2,7 @@ function AppCtrl ($scope) {
 
     var App = {
         Tab : { main: true, settings: false },
-        Settings: { add: true, sub: false, divide: false, multiply: false },
+        Settings: { integral: true, approximation: false, taylor: false, convergence: false },
         Result: { success: 0, errors: 0 },
         Task: {text: '1', response: '', userResponse: ''}
     }
@@ -25,10 +25,10 @@ function AppCtrl ($scope) {
         };
         var type = function () {
             var arr = [];
-            App.Settings.add ? arr.push('+') : '';
-            App.Settings.sub ? arr.push('-') : '';
-            App.Settings.divide ? arr.push('/') : '';
-            App.Settings.multiply ? arr.push('*') : '';
+            App.Settings.integral ? arr.push('+') : '';
+            App.Settings.approximation ? arr.push('-') : '';
+            App.Settings.taylor ? arr.push('/') : '';
+            App.Settings.convergence ? arr.push('*') : '';
 
             return arr[Math.floor(Math.random() * arr.length)];
 
@@ -84,20 +84,20 @@ function AppCtrl ($scope) {
     $scope.App = App;
 
     var testTypes = function (type) {
-            if (!App.Settings.add && !App.Settings.sub &&
-                !App.Settings.divide && !App.Settings.multiply) {
+            if (!App.Settings.integral && !App.Settings.approximation &&
+                !App.Settings.taylor && !App.Settings.convergence) {
             switch (type) {
-                case 'add':
-                    App.Settings.add = true;
+                case 'integral':
+                    App.Settings.integral = true;
                     break;
-                case 'sub':
-                    App.Settings.sub = true;
+                case 'approximation':
+                    App.Settings.approximation = true;
                     break;
-                case 'divide':
-                    App.Settings.divide = true;
+                case 'taylor':
+                    App.Settings.taylor = true;
                     break;
-                case 'multiply':
-                    App.Settings.multiply = true;
+                case 'convergence':
+                    App.Settings.convergence = true;
                     break;
                 default:
                     console.log('Something wrong')
@@ -106,20 +106,20 @@ function AppCtrl ($scope) {
             }
     }
 
-    $scope.$watch('App.Settings.add', function() {
-        testTypes('add');
+    $scope.$watch('App.Settings.integral', function() {
+        testTypes('integral');
         App.getTask();
     });
-    $scope.$watch('App.Settings.sub', function() {
-        testTypes('sub');
+    $scope.$watch('App.Settings.approximation', function() {
+        testTypes('approximation');
         App.getTask();
     });
-    $scope.$watch('App.Settings.divide', function() {
-        testTypes('div');
+    $scope.$watch('App.Settings.taylor', function() {
+        testTypes('taylor');
         App.getTask();
     });
-    $scope.$watch('App.Settings.multiply', function() {
-        testTypes('mul');
+    $scope.$watch('App.Settings.convergence', function() {
+        testTypes('convergence');
         App.getTask();
     });
 }
