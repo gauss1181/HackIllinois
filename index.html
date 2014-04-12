@@ -3,6 +3,12 @@
     <title>Improve Math Skills By Self Pacing</title>
     <script src="js/angular.min.js"></script>
     <script src="js/AppCtrl.js"></script>
+    <script type="text/x-mathjax-config">
+  	MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript"
+  	src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
 </head>
 <body ng-controller="AppCtrl">
     <div class="breadcrumbs">
@@ -11,7 +17,7 @@
     </div>
     <div class="main" ng-show="App.Tab.main">
         <div class="enter">
-            <span class="task">{{ App.Task.text }}</span>
+            <span class="task">$\int$ {{ App.Task.text }} $dx$</span>
             <br/>
             <span>Enter answer in below input</span>
             <br/>

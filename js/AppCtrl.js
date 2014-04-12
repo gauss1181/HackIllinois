@@ -49,7 +49,7 @@ function AppCtrl ($scope) {
                 break;
         };
 
-        App.Task.text = type + ' ' + first + ' = ?';
+        App.Task.text = first;
     };
 
     App.getTask();
