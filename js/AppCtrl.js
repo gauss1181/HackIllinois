@@ -19,53 +19,37 @@ function AppCtrl ($scope) {
 
     App.getTask = function(){
         var getRandomNumber = function () {
-            var number = Math.floor(Math.random() * 10);
+            var number = Math.floor(Math.random() * 100);
             if (number === 0) { number = getRandomNumber(); }
             return number;
         };
         var type = function () {
             var arr = [];
-            App.Settings.integral ? arr.push('Integrate:') : '';
-            App.Settings.approximation ? arr.push('Euler Approximate:') : '';
-            App.Settings.taylor ? arr.push('Convert to Taylor series:') : '';
+            App.Settings.integral ? arr.push('Integrate') : '';
+            App.Settings.approximation ? arr.push('Euler Approximate') : '';
+            App.Settings.taylor ? arr.push('Convert to Taylor series') : '';
             App.Settings.convergence ? arr.push('Determine convergence/divergence') : '';
 
             return arr[Math.floor(Math.random() * arr.length)];
 
         }();
-        var first  = getRandomNumber(),
-            second = getRandomNumber(),
-            temp;
+        var first  = getRandomNumber();
         switch (type) {
             case 'Euler Approximate:':
-                if (first < second) {
-                    temp = first;
-                    first = second;
-                    second = temp;
-                }
-                App.Task.response = first - second;
+                App.Task.response = first;
                 break;
             case 'Integrate:':
-                App.Task.response = first + second;
+                App.Task.response = first;
                 break;
             case 'Convert to Taylor series:':
-                if (first < second) {
-                    temp = first;
-                    first = second;
-                    second = temp;
-                }
-                if (first % second !== 0) {
-                    temp = first % second;
-                    first = first + second - temp;
-                }
-                App.Task.response = first / second;
+                App.Task.response = first;
                 break;
             case 'Determine convergence/divergence:':
-                App.Task.response = first * second;
+                App.Task.response = first;
                 break;
         };
 
-        App.Task.text = type + ' ' + first + ' ' + second + ' = ?';
+        App.Task.text = type + ' ' + first + ' = ?';
     };
 
     App.getTask();
