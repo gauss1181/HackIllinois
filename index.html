@@ -1,11 +1,47 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
+<html ng-app>
 <head>
-    <meta charset="UTF-8">
-    <title>Level 1: Learning the Ropes</title>
+    <title>Improve Math Skills By Self Pacing</title>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+    <script src="js/angular.min.js"></script>
+    <script src="js/controllers/AppCtrl.js"></script>
 </head>
-<body>
-<h1><b>Want a self-paced way to learn calculus?</b></h1>
-<p>insert text here</p>   
+<body ng-controller="AppCtrl">
+    <div class="breadcrumbs">
+        <div ng-click="App.Tab.settings = false; App.Tab.main = true;" class="active">main</div>
+        <div ng-click="App.Tab.main = false; App.Tab.settings = true;">settings</div>
+    </div>
+    <div class="main" ng-show="App.Tab.main">
+        <div class="enter">
+            <span class="task">{{ App.Task.text }}</span>
+            <br/>
+            <span>Enter answer in below input</span>
+            <br/>
+            <span class="answer">
+                <input placeholder="enter answer here ..."
+                       ng-model="App.Task.userResponse"
+                       ng-change="App.validation()"
+                       type="text"/>
+            </span>
+            <button ng-disabled="!App.Task.userResponse" ng-click="App.testing()">send</button>
+        </div>
+
+    </div>
+    <div class="main" ng-show="App.Tab.settings">
+        <div class="enter">
+            Settings: <br/>
+            <span>Add:  <input type="checkbox" ng-model="App.Settings.add"/></span><br/>
+            <span>Sub:  <input type="checkbox" ng-model="App.Settings.sub"/></span><br/>
+            <span>Div:  <input type="checkbox" ng-model="App.Settings.divide"/></span><br/>
+            <span>Mult:  <input type="checkbox" ng-model="App.Settings.multiply"/></span>
+        </div>
+    </div>
+    <div class="right_section">
+        <div>Result:</div>
+        <div>
+            <div class="left">{{ App.Result.success }}</div>
+            <div class="right">{{ App.Result.errors }}</div>
+        </div>
+    </div>
 </body>
 </html>
