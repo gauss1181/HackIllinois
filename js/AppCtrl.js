@@ -25,10 +25,10 @@ function AppCtrl ($scope) {
         };
         var type = function () {
             var arr = [];
-            App.Settings.integral ? arr.push('+') : '';
-            App.Settings.approximation ? arr.push('-') : '';
-            App.Settings.taylor ? arr.push('/') : '';
-            App.Settings.convergence ? arr.push('*') : '';
+            App.Settings.integral ? arr.push('Integrate:') : '';
+            App.Settings.approximation ? arr.push('Euler Approximate:') : '';
+            App.Settings.taylor ? arr.push('Convert to Taylor series:') : '';
+            App.Settings.convergence ? arr.push('Determine convergence/divergence') : '';
 
             return arr[Math.floor(Math.random() * arr.length)];
 
@@ -37,7 +37,7 @@ function AppCtrl ($scope) {
             second = getRandomNumber(),
             temp;
         switch (type) {
-            case '-':
+            case 'Euler Approximate:':
                 if (first < second) {
                     temp = first;
                     first = second;
@@ -45,10 +45,10 @@ function AppCtrl ($scope) {
                 }
                 App.Task.response = first - second;
                 break;
-            case '+':
+            case 'Integrate:':
                 App.Task.response = first + second;
                 break;
-            case '/':
+            case 'Convert to Taylor series:':
                 if (first < second) {
                     temp = first;
                     first = second;
@@ -60,12 +60,12 @@ function AppCtrl ($scope) {
                 }
                 App.Task.response = first / second;
                 break;
-            case '*':
+            case 'Determine convergence/divergence:':
                 App.Task.response = first * second;
                 break;
         };
 
-        App.Task.text = first + type + second + ' = ?';
+        App.Task.text = type + ' ' + first + ' ' + second + ' = ?';
     };
 
     App.getTask();
