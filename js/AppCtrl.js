@@ -6,16 +6,6 @@ function AppCtrl ($scope) {
         Result: { success: 0, errors: 0 },
         Task: {text: '1', response: '', userResponse: ''}
     }
-    App.validation = function() {
-            if (App.Task.userResponse &&
-                App.Task.userResponse.length > 0 &&
-                angular.isNumber(+App.Task.userResponse) &&
-                +App.Task.userResponse > 0)  {
-                App.Task.userResponse = Math.floor(+App.Task.userResponse);
-            } else {
-                App.Task.userResponse = App.Task.userResponse.slice(0 , App.Task.userResponse.length - 1);
-            }
-    };
 
     App.getTask = function(){
         var getRandomNumber = function () {
