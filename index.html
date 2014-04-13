@@ -24,7 +24,6 @@
             <span class="answer">
                 <input placeholder="enter answer here ..."
                        ng-model="App.Task.userResponse"
-                       ng-change="App.validation()"
                        type="text"/>
             </span>
             <button ng-disabled="!App.Task.userResponse" ng-click="App.testing()">Submit</button>
